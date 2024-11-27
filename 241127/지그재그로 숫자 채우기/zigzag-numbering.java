@@ -24,7 +24,7 @@ public class Main {
                 }
             }
 
-            else {
+            else { // ↑
                 for(int r=n-1; r>=0; r--) {
                     board[r][c] = ans;
                     ans++;
