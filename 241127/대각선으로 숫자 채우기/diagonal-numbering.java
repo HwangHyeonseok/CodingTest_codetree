@@ -16,7 +16,7 @@ public class Main {
         int ans = 1;
 
         // → 으로 가면서 사선 이동
-        for(int c=0; c<n; c++) { 
+        for(int c=0; c<m; c++) { 
             int curR = 0;
             int curC = c;
             board[curR][curC] = ans;
