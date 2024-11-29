@@ -12,11 +12,17 @@ public class Main {
         }
         // 끝 글자가 해당 입력받은 글자면 출력
         String endNum = br.readLine();
+        boolean isNone = true;
         
         for(int i=0;i<10;i++) {
             if(input[i].substring(input[i].length()-1).equals(endNum)) {
+                isNone = false;
                 bw.write(input[i] + "\n");
             }
+        }
+
+        if(isNone == true) {
+            bw.write("None");
         }
 
         bw.flush();
