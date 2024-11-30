@@ -8,16 +8,29 @@ public class Main {
 
         // firstLine input //
         String input = br.readLine();
+        StringTokenizer st = new StringTokenizer(input, " ");
+        int Alen = Integer.parseInt(st.nextToken());
+        int Blen = Integer.parseInt(st.nextToken());
         
         // secondLine input //
         String AArrinput = br.readLine();
-        AArrinput = AArrinput.replace(" ", "");
+        StringTokenizer st2 = new StringTokenizer(AArrinput, " ");
+        
+        int[] aArr = new int[Alen];
+        for(int i=0; i<Alen; i++) {
+            aArr[i] = Integer.parseInt(st2.nextToken());
+        }
 
         // thirdLine input //
         String BArrinput = br.readLine();
-        BArrinput = BArrinput.replace(" ", "");
+        StringTokenizer st3 = new StringTokenizer(BArrinput, " ");
+        
+        int[] bArr = new int[Blen];
+        for(int i=0; i<Blen; i++) {
+            bArr[i] = Integer.parseInt(st3.nextToken());
+        }
 
-        if(isContinueArr(AArrinput, BArrinput) == true) {
+        if(isContinueArr(aArr, bArr) == true) {
             bw.write("Yes");
         } else {
             bw.write("No");
@@ -28,12 +41,16 @@ public class Main {
     }
 
     // logic //
-    static boolean isContinueArr(String AArrinput, String BArrinput) {
-        if(AArrinput.contains(BArrinput) == true) { // 또는 AArrinput.indexOf(BArrinput) != -1
+    static boolean isContinueArr(int[] aArr, int[] bArr) {
+        for(int i=0; i<(aArr.length-bArr.length)+1; i++) {
+            for(int j=i; j<i+3; j++) {
+                if(aArr[j] != bArr[j]) break;
+            }
+            // 모두 다 같은게 있는 경우
             return true;
         }
-        else {
-            return false;
-        }
+
+        // 다 했는데도 같은게 없는 경우
+        return false;
     }
 }
