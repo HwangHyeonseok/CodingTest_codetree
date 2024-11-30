@@ -26,6 +26,7 @@ public class Main {
     // 5 % 3 != 0 
     // -> 따라서 7은 소수이다.
     static boolean isPrime(int checkNum) {
+        if(checkNum == 1) return false; // 1은 소수가 될 수 없다.
         for(int i=2; i<=(checkNum/2); i++) {
             if(checkNum % i == 0) return false;
         }
