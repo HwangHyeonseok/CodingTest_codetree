@@ -43,11 +43,12 @@ public class Main {
     // logic //
     static boolean isContinueArr(int[] aArr, int[] bArr) {
         for(int i=0; i<(aArr.length-bArr.length)+1; i++) {
-            for(int j=i; j<i+3; j++) {
-                if(aArr[j] != bArr[j]) break;
+            boolean match = true;
+            for(int j=0; j<bArr.length; j++) {
+                if(aArr[i+j] != bArr[j]) match = false;
             }
-            // 모두 다 같은게 있는 경우
-            return true;
+
+            if(match == true) return true;
         }
 
         // 다 했는데도 같은게 없는 경우
