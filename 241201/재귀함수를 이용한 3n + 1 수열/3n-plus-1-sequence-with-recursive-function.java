@@ -16,6 +16,6 @@ public class Main {
         if(n == 1) return cnt;
         
         if(n%2==0) return logic(n/2, cnt+1);
-        else return logic(n+3, cnt+1);
+        else return logic(n*3+1, cnt+1);
     }
 }
