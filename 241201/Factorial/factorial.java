@@ -12,7 +12,7 @@ public class Main {
         bw.close();
     }
 
-    public static void fact(int N) throws IOException {
+    public static int fact(int N) throws IOException {
         if(N == 0 || N == 1) return 1;
         
         return fact(N-1) * N;
