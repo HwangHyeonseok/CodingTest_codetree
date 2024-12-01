@@ -15,15 +15,17 @@ public class Main {
         bw.close();
     }
 
-    public static void printNum(int n) {
+    public static void printNum(int n) throws IOException {
+        if(n==0) return;
         printNum(n-1);
         bw.write(String.format("%d ", n));
         bw.flush();
     }
 
-    public static void printNumReverse(int n) {
+    public static void printNumReverse(int n) throws IOException {
+        if(n==0) return;
         bw.write(String.format("%d ", n));
         bw.flush();
-        printNum(n-1);
+        printNumReverse(n-1);
     }
 }
