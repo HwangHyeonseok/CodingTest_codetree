@@ -14,12 +14,12 @@ public class Main {
             arr[i] = Integer.parseInt(st.nextToken());
         }
 
-        int GreatestCommonDivisor = arr[0];
+        int leastCommonMultiple = arr[0];
         for(int i=1; i<N; i++) {
-            GreatestCommonDivisor = lcm(GreatestCommonDivisor,arr[i]);
+            leastCommonMultiple = lcm(leastCommonMultiple,arr[i]);
         }
 
-        bw.write(GreatestCommonDivisor+"");
+        bw.write(leastCommonMultiple+"");
         bw.flush();
         bw.close();
     }
