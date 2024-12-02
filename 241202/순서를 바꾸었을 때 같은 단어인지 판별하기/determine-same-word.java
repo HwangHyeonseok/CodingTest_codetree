@@ -18,6 +18,7 @@ public class Main {
         Arrays.sort(word2);
         
         boolean isSame = true;
+        if(word1.length != word2.length) isSame = false;
         for(int i=0; i<word1.length; i++) {
             if(word1[i] != word2[i]) {
                 isSame = false;
