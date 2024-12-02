@@ -15,7 +15,7 @@ public class Main {
         List<String> words = new ArrayList<>();
         for(int i=0; i<n; i++) {
             String checkWord = br.readLine();
-            if(checkWord.contains(T)) {
+            if(checkWord.indexOf(T) == 0) {
                 words.add(checkWord);
             }
         }
