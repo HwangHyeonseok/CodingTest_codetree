@@ -18,7 +18,8 @@ class Student implements Comparable<Student> {
     // 정렬
    @Override
    public int compareTo(Student other) {
-    return Integer.compare(this.score, other.score);// 오름차순 정렬 (this가 앞에 옴.)
+    //return Integer.compare(this.score, other.score);// 오름차순 정렬 (this가 앞에 옴.)
+    return this.score.compareTo(other.score);
    }
 };
 
