@@ -32,7 +32,7 @@ public class Main {
         TwoDay += d2;
 
         // TwoDay - oneDay;
-        int ans = TwoDay - OneDay;
+        int ans = Math.abs(TwoDay - OneDay);
         bw.write(ans+"");
         bw.flush();
         bw.close();
