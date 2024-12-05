@@ -20,16 +20,22 @@ public class Main {
         int TwoDay = 0;
 
         // 월 계산
-        for(int i=0; i<m1; i++) {
+        for(int i=0; i<m1-1; i++) {
             OneDay += monthToDay[i];
         }
-        for(int i=0; i<m2; i++) {
+        for(int i=0; i<m2-1; i++) {
             TwoDay += monthToDay[i];
         }
+        // System.out.println("OneDay : " + OneDay);
+        // System.out.println("TwoDay : " + TwoDay);
 
         // 일 계산
         OneDay += d1;
         TwoDay += d2;
+
+        // System.out.println("OneDay : " + OneDay);
+        // System.out.println("TwoDay : " + TwoDay);
+
 
         // TwoDay - oneDay;
         int ans = Math.abs(TwoDay - OneDay) + 1; // 시작일도 포함이므로 + 1
