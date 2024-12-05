@@ -32,7 +32,7 @@ public class Main {
         TwoDay += d2;
 
         // TwoDay - oneDay;
-        int ans = Math.abs(TwoDay - OneDay);
+        int ans = Math.abs(TwoDay - OneDay) + 1; // 시작일도 포함이므로 + 1
         bw.write(ans+"");
         bw.flush();
         bw.close();
