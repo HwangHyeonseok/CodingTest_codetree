@@ -2,7 +2,7 @@ import java.util.*;
 import java.io.*;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
@@ -16,7 +16,7 @@ public class Main {
         // logic // 
         // a시 b분 을 분으로 환산 -> a*60+b 분
 
-        int ans = (a*60+b) - (c*60+d);
+        int ans = (c*60+d) - (a*60+b);
         bw.write(ans+"");
         bw.flush();
         bw.close();
