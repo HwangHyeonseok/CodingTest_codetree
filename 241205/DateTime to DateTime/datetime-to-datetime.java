@@ -14,7 +14,9 @@ public class Main {
 
         // logic // 
         // (a-11)*60*24 + (b-11)*60 + (c-11)
+
         int ans = (a-11)*60*24 + (b-11)*60 + (c-11);
+        if(ans < 0) ans = -1;
         
         // output //
         bw.write(ans+"");
