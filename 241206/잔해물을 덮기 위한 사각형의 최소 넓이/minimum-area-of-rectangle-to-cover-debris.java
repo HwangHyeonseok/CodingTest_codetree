@@ -51,15 +51,15 @@ public class Main {
                 if(board[r+OFFSET][c+OFFSET] == 1) {
                     maxC = Math.max(maxC, c+OFFSET);
                     minC = Math.min(minC, c+OFFSET);
+                    maxR = Math.max(maxR, r+OFFSET);
+                    minR = Math.min(minR, r+OFFSET);
                 }
             }
-            maxR = Math.max(maxR, r+OFFSET);
-            minR = Math.min(minR, r+OFFSET);
         }
 
         // output //
         int ans = (maxR-minR+1)*(maxC-minC+1);
-        if(minR == Integer.MAX_VALUE || minC == Integer.MAX_VALUE) ans = 0; // 남은 첫 번째 직사각형의 잔해 영역이 없는 경우
+        if(minR == Integer.MAX_VALUE || minC == Integer.MAX_VALUE || maxR == -1 || maxC == -1) ans = 0; // 남은 첫 번째 직사각형의 잔해 영역이 없는 경우
         bw.write(ans+"");
         bw.flush();
         bw.close();
