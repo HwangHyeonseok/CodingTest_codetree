@@ -22,10 +22,8 @@ public class Main {
 
             if(moveDir.equals("R")) { // 검은색으로 칠하기
                 for(int c=curX+100000; c<curX+moveCnt+100000; c++) {
-                    if(board[c] != 2) {
-                        blackCnt[c]++;
-                        board[c] = 2;
-                    }
+                    blackCnt[c]++;
+                    board[c] = 2;
                 }
 
                 curX += moveCnt-1;
@@ -33,10 +31,8 @@ public class Main {
 
             else if(moveDir.equals("L")) { // 흰색으로 칠하기
                 for(int c=curX+100000; c>curX-moveCnt+100000; c--) {
-                    if(board[c] != 1) {
-                        whiteCnt[c]++;
-                        board[c] = 1;
-                    }
+                    whiteCnt[c]++;
+                    board[c] = 1;
                 }
 
                 curX -= moveCnt-1;
