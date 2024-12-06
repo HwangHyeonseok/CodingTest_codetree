@@ -20,7 +20,7 @@ public class Main {
             String moveDir = st.nextToken();
 
             if(moveDir.equals("R")) {
-                for(int c=curX+1000+1; c<=curX+moveCnt+1000; c++) {
+                for(int c=curX+1000; c<curX+moveCnt+1000; c++) {
                     board[c]++;
                 }
                 curX += moveCnt;
