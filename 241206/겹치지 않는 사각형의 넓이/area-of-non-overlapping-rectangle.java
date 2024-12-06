@@ -34,22 +34,22 @@ public class Main {
         // logic // 
         int[][] board = new int[MAX_N][MAX_N];
         // A 채우기
-        for(int r=Ay1; r<Ay2; r++) {
-            for(int c=Ax1; c<Ax2; c++) {
+        for(int r=Ay1+1000; r<Ay2+1000; r++) {
+            for(int c=Ax1+1000; c<Ax2+1000; c++) {
                 board[r][c] = 1;
             }
         }
 
         // B 채우기
-        for(int r=By1; r<By2; r++) {
-            for(int c=Bx1; c<Bx2; c++) {
+        for(int r=By1+1000; r<By2+1000; r++) {
+            for(int c=Bx1+1000; c<Bx2+1000; c++) {
                 board[r][c] = 1;
             }
         }
 
         // M 영역 지우기
-        for(int r=My1; r<My2; r++) {
-            for(int c=Mx1; c<Mx2; c++) {
+        for(int r=My1+1000; r<My2+1000; r++) {
+            for(int c=Mx1+1000; c<Mx2+1000; c++) {
                 board[r][c] = 0;
             }
         }
@@ -62,8 +62,8 @@ public class Main {
         int startC = Math.min(Ax1, Bx1);
         int endC = Math.max(Ax2, Bx2);
 
-        for(int r=startR; r<endR; r++) {
-            for(int c=startC; c<endC; c++) {
+        for(int r=startR+1000; r<endR+1000; r++) {
+            for(int c=startC+1000; c<endC+1000; c++) {
                 if(board[r][c] == 1) ans++;
             }
         }
