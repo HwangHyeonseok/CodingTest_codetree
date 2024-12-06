@@ -59,6 +59,7 @@ public class Main {
 
         // output //
         int ans = (maxR-minR+1)*(maxC-minC+1);
+        if(minR == Integer.MAX_VALUE || minC == Integer.MAX_VALUE) ans = 0; // 남은 첫 번째 직사각형의 잔해 영역이 없는 경우
         bw.write(ans+"");
         bw.flush();
         bw.close();
