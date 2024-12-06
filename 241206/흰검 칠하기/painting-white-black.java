@@ -9,7 +9,8 @@ public class Main {
         // 0~100000 [0]~[100000]
         // -1~-100000 [100001]~[200000]
         int[] board = new int[200001]; // White : 1, Black : 2
-        int[] change = new int[200001]; // 변경 횟수 : 4회 이상이면 gray
+        int[] blackCnt = new int[200001]; // blackCnt 2번 이상이면서 whiteCnt 2번 이상이면 gray
+        int[] whiteCnt = new int[200001]; // blackCnt 2번 이상이면서 whiteCnt 2번 이상이면 gray
         int curX = 0; // 현재 위치
 
         int n = Integer.parseInt(br.readLine());
@@ -22,7 +23,7 @@ public class Main {
             if(moveDir.equals("R")) { // 검은색으로 칠하기
                 for(int c=curX+100000; c<curX+moveCnt+100000; c++) {
                     if(board[c] != 2) {
-                        change[c]++;
+                        blackCnt[c]++;
                         board[c] = 2;
                     }
                 }
@@ -33,7 +34,7 @@ public class Main {
             else if(moveDir.equals("L")) { // 흰색으로 칠하기
                 for(int c=curX+100000; c>curX-moveCnt+100000; c--) {
                     if(board[c] != 1) {
-                        change[c]++;
+                        whiteCnt[c]++;
                         board[c] = 1;
                     }
                 }
@@ -47,7 +48,7 @@ public class Main {
         int black = 0; // 2
         int gray = 0; // change[i]가 4 이상
         for(int i=0; i<board.length; i++) {
-            if(change[i] >= 4) {
+            if(blackCnt[i] >= 2 && whiteCnt[i] >= 2) {
                 gray++;
                 continue;
             }
