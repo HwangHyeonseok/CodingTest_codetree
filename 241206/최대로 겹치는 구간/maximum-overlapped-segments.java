@@ -2,7 +2,7 @@ import java.util.*;
 import java.io.*;
 
 public class Main {
-    static final int MAX_N = 101;
+    static final int MAX_N = 200;
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
@@ -21,7 +21,7 @@ public class Main {
             int x1 = Integer.parseInt(st.nextToken());
             int x2 = Integer.parseInt(st.nextToken());
             
-            for(int c=x1; c<x2; c++) {
+            for(int c=x1+100; c<x2+100; c++) {
                 board[c]++;
             }
         }
