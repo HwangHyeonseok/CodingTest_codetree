@@ -57,12 +57,13 @@ public class Main {
         // 감염 시작 시점 찾기
         int time = 0;
         while(true) {
-            if(developer[handClapList.get(time).developerFrom] == 1 || developer[handClapList.get(time).developerTo] == 1) {
-                developer[handClapList.get(time).developerFrom] = 1;
-                developer[handClapList.get(time).developerTo] = 1;
+            if(developer[handClapList.get(0).developerFrom] == 1 || developer[handClapList.get(0).developerTo] == 1) {
+                developer[handClapList.get(0).developerFrom] = 1;
+                developer[handClapList.get(0).developerTo] = 1;
                 time++;
                 break;
             }
+            handClapList.remove(0);
             time++;
         }
 
