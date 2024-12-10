@@ -37,7 +37,6 @@ public class Main {
                 for(int j=0; j<moveCnt; j++) {
                     locationA--;
                     timeToLocationA[++timeA] = locationA;
-                    timeA++;
                 }
             }
         }
