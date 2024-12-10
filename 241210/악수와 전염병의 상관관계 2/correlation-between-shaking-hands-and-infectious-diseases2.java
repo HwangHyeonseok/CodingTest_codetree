@@ -58,13 +58,11 @@ public class Main {
         int time = 0;
         while(true) {
             if(developer[handClapList.get(time).developerFrom] == 1 || developer[handClapList.get(time).developerTo] == 1) {
-                developer[handClapList.get(time).developerFrom] = 1;
-                developer[handClapList.get(time).developerTo] = 1;
-                time++;
                 break;
             }
             time++;
         }
+        // System.out.println(time);
 
         // 최초 개발자가 감염시킨 이후로부터 K개 감염 시작
         for(int i=time; i<Math.min(time+K, handClapList.size()); i++) {
