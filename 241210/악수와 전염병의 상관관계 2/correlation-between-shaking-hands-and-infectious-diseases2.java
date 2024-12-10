@@ -53,13 +53,26 @@ public class Main {
         Collections.sort(handClapList); 
 
         // K개 만큼만 감염 처리
-        for(int i=0; i<K; i++) {
+
+        // 감염 시작 시점 찾기
+        int time = 0;
+        while(true) {
+            if(developer[handClapList.get(time).developerFrom] == 1 || developer[handClapList.get(time).developerTo] == 1) {
+                break;
+            }
+            time++;
+        }
+
+        // 최초 개발자가 감염시킨 이후로부터 시간 시작
+        for(int i=time; i<Math.min(time+K, handClapList.size()); i++) {
             // 둘 중 하나가 감염자일 경우 -> 둘 다 감염 처리
-            if(developer[handClapList.get(i).developerFrom] == 1 || developer[handClapList.get(i).developerTo] == 1) {
-                developer[handClapList.get(i).developerFrom] = 1;
-                developer[handClapList.get(i).developerTo] = 1;
+            if(developer[handClapList.get(time).developerFrom] == 1 || developer[handClapList.get(time).developerTo] == 1) {
+                developer[handClapList.get(time).developerFrom] = 1;
+                developer[handClapList.get(time).developerTo] = 1;
             }
         }
+
+
         
         
         // output //
