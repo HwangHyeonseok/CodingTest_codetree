@@ -3,9 +3,9 @@ import java.util.*;
 import java.io.*;
 
 public class Main {
-    static final int MAX_N = 1001;
-    static int[] timeToLocationA = new int[MAX_N]; // 시간에 따른 위치를 저장하는 배열
-    static int[] timeToLocationB = new int[MAX_N];
+    static final int MAX_N = 1000000;
+    static int[] timeToLocationA = new int[MAX_N+1]; // 시간에 따른 위치를 저장하는 배열
+    static int[] timeToLocationB = new int[MAX_N+1];
 
     public static void main(String[] args) throws IOException{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
