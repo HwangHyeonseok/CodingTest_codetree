@@ -36,7 +36,9 @@ public class Main {
         int T = Integer.parseInt(st.nextToken()); // 악수 총 횟수
 
         ArrayList<HandClap> handClapList = new ArrayList<>(); // 악수 정보
-        int[] developer = new int[N+1]; // 개발자 정보 (0번은 사용하지 않음.)
+        int[] developer = new int[N+1]; // 개발자 감염 정보 (0번은 사용하지 않음.)
+        int[] shakeHand = new int[N+1]; // 악수 횟수
+
         developer[P] = 1; // 초기 감염자 처리
 
         for(int i=0; i<T; i++) {
@@ -52,30 +54,19 @@ public class Main {
         // 악수한 시간 순으로 정렬
         Collections.sort(handClapList); 
 
-        // K개 만큼만 감염 처리
-
-        // 감염 시작 시점 찾기
-        int time = 0;
-        while(true) {
-            if(developer[handClapList.get(time).developerFrom] == 1 || developer[handClapList.get(time).developerTo] == 1) {
-                break;
-            }
-            time++;
-        }
-        // System.out.println(time);
-
-        // 최초 개발자가 감염시킨 이후로부터 K개 감염 시작
-        for(int i=time; i<Math.min(time+K, handClapList.size()); i++) {
-            // 둘 중 하나가 감염자일 경우 -> 둘 다 감염 처리
-            if(developer[handClapList.get(i).developerFrom] == 1 || developer[handClapList.get(i).developerTo] == 1) {
-                developer[handClapList.get(i).developerFrom] = 1;
+        // 각 사람 당 K번만 감염시킬 수 있음.
+        for(int i=0; i<handClapList.size(); i++) {
+            // 둘 중 하나가 감염자일 경우 -> 감염 처리
+            if(developer[handClapList.get(i).developerFrom] == 1 && shakeHand[handClapList.get(i).developerFrom] <= K) {
                 developer[handClapList.get(i).developerTo] = 1;
-            }
+                shakeHand[handClapList.get(i).developerFrom]++;
+            } 
+            if(developer[handClapList.get(i).developerTo] == 1 && shakeHand[handClapList.get(i).developerTo] <= K) {
+                developer[handClapList.get(i).developerFrom] = 1;
+                shakeHand[handClapList.get(i).developerFrom]++;
+            } 
         }
 
-
-        
-        
         // output //
         // 감염 정보 출력
         for(int i=1; i<developer.length; i++) {
