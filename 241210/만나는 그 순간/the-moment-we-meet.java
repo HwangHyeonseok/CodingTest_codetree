@@ -85,7 +85,7 @@ public class Main {
         // output //
         // 만나는 순간 = 인덱스에 기록한 이동 횟수가 같은 순간 중 가장 짧은 시간이 걸리는 것을 출력
         int ans = Integer.MAX_VALUE;
-        for(int i=1; i<timeToLocationB.length; i++) {
+        for(int i=1; i<timeB; i++) {
             // System.out.println("i : " + i + " A위치 : " + timeToLocationA[i] + " B위치 : " + timeToLocationB[i]);
             if(timeToLocationA[i] == timeToLocationB[i]) {
                 ans = i;
