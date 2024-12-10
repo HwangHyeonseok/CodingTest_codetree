@@ -18,7 +18,7 @@ public class Main {
         int M = Integer.parseInt(st.nextToken()); // B의 이동 횟수
         
         // A 이동 입력 + 구현
-        int timeA = 1; // A의 누적 이동 시간
+        int timeA = 0; // A의 누적 이동 시간
         int locationA = 0; // A의 위치
         for(int i=0; i<N; i++) {
             input = br.readLine();
@@ -29,15 +29,14 @@ public class Main {
             if(command.equals("R")) {
                 for(int j=0; j<moveCnt; j++) {
                     locationA++;
-                    timeToLocationA[timeA] = locationA;
-                    timeA++;
+                    timeToLocationA[++timeA] = locationA;
                 }
             }
 
             else if(command.equals("L")) {
                 for(int j=0; j<moveCnt; j++) {
                     locationA--;
-                    timeToLocationA[timeA] = locationA;
+                    timeToLocationA[++timeA] = locationA;
                     timeA++;
                 }
             }
@@ -51,7 +50,7 @@ public class Main {
 
         // B 이동 입력 + 구현
         int locationB = 0; // 현재 B의 위치
-        int timeB = 1; // B의 누적 이동 시간
+        int timeB = 0; // B의 누적 이동 시간
         for(int i=0; i<M; i++) {
             input = br.readLine();
             st = new StringTokenizer(input, " ");
@@ -61,16 +60,14 @@ public class Main {
             if(command.equals("R")) {
                 for(int j=0; j<moveCnt; j++) {
                     locationB++;
-                    timeToLocationB[timeB] = locationB;
-                    timeB++;
+                    timeToLocationB[++timeB] = locationB;
                 }
             }
 
             else if(command.equals("L")) {
                 for(int j=0; j<moveCnt; j++) {
                     locationB--;
-                    timeToLocationB[timeB] = locationB;
-                    timeB++;
+                    timeToLocationB[++timeB] = locationB;
                 }
             }
         }
@@ -84,18 +81,15 @@ public class Main {
 
         // output //
         // 만나는 순간 = 인덱스에 기록한 이동 횟수가 같은 순간 중 가장 짧은 시간이 걸리는 것을 출력
-        int ans = Integer.MAX_VALUE;
-        for(int i=1; i<timeB; i++) {
+        int ans = -1;
+        for(int i=1; i<=timeB; i++) {
             // System.out.println("i : " + i + " A위치 : " + timeToLocationA[i] + " B위치 : " + timeToLocationB[i]);
             if(timeToLocationA[i] == timeToLocationB[i]) {
                 ans = i;
                 break;
             }
         }
-        
-        if(ans == Integer.MAX_VALUE) { // 만날 수 없는 경우
-            ans = -1;
-        }
+
         bw.write(ans+"");
         bw.flush();
         bw.close();
