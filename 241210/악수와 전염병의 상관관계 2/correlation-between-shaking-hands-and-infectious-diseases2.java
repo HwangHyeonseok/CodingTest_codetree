@@ -56,14 +56,23 @@ public class Main {
 
         // 각 사람 당 K번만 감염시킬 수 있음.
         for(int i=0; i<handClapList.size(); i++) {
-            // 둘 중 하나가 감염자일 경우 -> 감염 처리
+            // 감염이 되어 있는 경우 악수 횟수 증가
+            if(developer[handClapList.get(i).developerFrom] == 1) {
+                shakeHand[handClapList.get(i).developerFrom]++;
+            }
+            if(developer[handClapList.get(i).developerTo] == 1) {
+                shakeHand[handClapList.get(i).developerTo]++;
+            }
+
+            // K번 이하 악수 시 전염
+
+            // developerFrom 감염자이고 K번 이하 악수했으면 developerTo에게 전염
             if(developer[handClapList.get(i).developerFrom] == 1 && shakeHand[handClapList.get(i).developerFrom] <= K) {
                 developer[handClapList.get(i).developerTo] = 1;
-                shakeHand[handClapList.get(i).developerFrom]++;
             } 
+            // developerTo에게 감염자이고 K번 이하 악수했으면 developerFrom 전염
             if(developer[handClapList.get(i).developerTo] == 1 && shakeHand[handClapList.get(i).developerTo] <= K) {
                 developer[handClapList.get(i).developerFrom] = 1;
-                shakeHand[handClapList.get(i).developerFrom]++;
             } 
         }
 
