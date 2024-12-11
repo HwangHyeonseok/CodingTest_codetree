@@ -15,7 +15,7 @@ public class Main {
         }
 
         // logic //
-        int ans = 1;
+        int ans = 0;
         int cnt = 0;
         for(int i=0; i<board.length; i++) {
             if(i==0 || board[i] > board[i-1]) cnt++;
@@ -24,6 +24,8 @@ public class Main {
                 cnt = 1;
             }
         }
+        // 마지막 처리
+        ans = Math.max(ans, cnt);
         
         
         // output //
