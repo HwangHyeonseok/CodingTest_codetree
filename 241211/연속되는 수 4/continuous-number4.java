@@ -15,7 +15,7 @@ public class Main {
         }
 
         // logic //
-        int ans = 0;
+        int ans = 1;
         int cnt = 0;
         for(int i=0; i<board.length; i++) {
             if(i==0 || board[i] > board[i-1]) cnt++;
