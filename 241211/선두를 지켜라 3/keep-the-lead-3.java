@@ -60,8 +60,8 @@ public class Main {
         // A,B 명예의 전당 변경 감지 (처음에 바뀐 것도 포함시킴)
         // A의 총 이동 시간과 B의 총 이동 시간이 동일하다고 가정
         int ans = 0;
-        
-        for(int i=1; i<timeA; i++) {
+
+        for(int i=1; i<=timeA; i++) {
             if(locationA[i] > locationB[i] && locationA[i-1] <= locationB[i-1]) {
                 ans++;
             }
