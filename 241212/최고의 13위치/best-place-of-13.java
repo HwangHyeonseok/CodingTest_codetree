@@ -22,12 +22,8 @@ public class Main {
         int maxCoin = 0;
         for(int r=0; r<N; r++) {
             for(int c=0; c<N-2; c++) {
-                int coin = 0;
                 // 하나의 격자에서 코인 개수 세기
-                for(int i=c; i<c+3; i++) {
-                    // 값이 1이 있을 때 동전 개수 + 1
-                    if(board[r][i] == 1) coin++;
-                }
+                int coin = board[r][c] + board[r][c+1] + board[r][c+2];
                 
                 maxCoin = Math.max(coin, maxCoin);
             }
