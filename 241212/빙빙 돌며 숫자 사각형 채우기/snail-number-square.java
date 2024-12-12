@@ -20,29 +20,28 @@ public class Main {
         int n = Integer.parseInt(st.nextToken()); // 행
         int m = Integer.parseInt(st.nextToken()); // 열
 
-        int curR = 0;
-        int curC = 0;
-        board[curR][curC] = 1;
+        int r = 0;
+        int c = 0;
+        board[r][c] = 1;
         
-        for(int i=0; i<n*m-1; i++) {
-            int nextR = dr[dir%4] + curR;
-            int nextC = dc[dir%4] + curC;
-            if(nextR < 0 || nextC < 0 || nextR >= n || nextC >= m || board[nextR][nextC] != 0) {
-                dir += 1;
-                nextR = dr[dir%4] + curR;
-                nextC = dc[dir%4] + curC;
-                // System.out.println("현재 nextR : " + nextR + " 현재 nextC : " + nextC + " 현재 dir : " + dir%4);
+        for(int i=2; i<=n*m; i++) {
+            int nr = dr[dir] + r;
+            int nc = dc[dir] + c;
+            // 맵 범위를 벗어나거나 이미 방문한 경우 방향을 바꿔준다.
+            if(nr < 0 || nc < 0 || nr >= n || nc >= m || board[nr][nc] != 0) {
+                dir = (dir + 1) % 4;
             }
-            board[nextR][nextC] = board[curR][curC] + 1;
-            curR = nextR;
-            curC = nextC;
+
+            r = r + dr[dir];
+            c = c + dc[dir];
+            board[r][c] = i;
         }
 
 
         
         // output //
-        for(int r=0; r<n; r++) {
-            for(int c=0; c<m; c++) {
+        for(r=0; r<n; r++) {
+            for(c=0; c<m; c++) {
                 bw.write(String.format("%d ", board[r][c]));
             }
             bw.write("\n");
