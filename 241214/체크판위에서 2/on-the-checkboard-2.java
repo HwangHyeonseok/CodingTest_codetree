@@ -31,6 +31,12 @@ public class Main {
         if(board[0][0].equals("W")) isWhite = true;
         else isWhite = false;
 
+        // 예외 처리
+        if(board[0][0].equals(board[R-1][C-1])) {
+            System.out.println(0);
+            return;
+        }
+
         // 첫 번째 이동 지역 찾기
         for(int r=1; r<R-2; r++) {
             for(int c=1; c<C-2; c++) {
