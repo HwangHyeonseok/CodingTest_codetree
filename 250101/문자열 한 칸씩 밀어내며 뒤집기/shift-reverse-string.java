@@ -31,8 +31,8 @@ public class Main {
             // abcd
             // dcba
             else if(command == 3) {
-                StringBuilder sb = new StringBuilder(word);
-                word = sb.reverse().toString();
+                StringBuffer sb = new StringBuffer(word); // word 라는 문자열을 StringBuilder 형으로 변경하여 sb 객체에 담는다.
+                word = sb.reverse().toString(); // 문자열을 뒤집고 다시 String 형으로 변경하여 word에 삽입
             }
 
             bw.write(word+"\n");
