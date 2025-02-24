@@ -29,7 +29,7 @@ public class Main {
     // 완전수인지 체크하는 알고리즘
     public static boolean isWanjensu(int checkNum) {
         int jinYuksu = 0; // 진약수의 총합
-        for(int i=1; i<checkNum; i++) {
+        for(int i=1; i<=checkNum/2; i++) {
             if(checkNum%i == 0) jinYuksu += i;
         }
 
