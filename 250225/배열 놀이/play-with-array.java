@@ -47,6 +47,7 @@ public class Main {
     }
 
     // 값이 command인 원소를 찾아 그 원소가 몇 번째 원소인지 출력
+    // 값이 command인 원소가 없으면 0 출력
     public static void secondOption(int command) throws IOException {
         for(int i=0; i<n; i++) {
             if(nArr[i] == command) {
@@ -54,6 +55,7 @@ public class Main {
                 return;
             }
         }
+        bw.write("0\n");
     }
 
     // 3 s e : s 번째 원소부터 e 번째 원소까지 각 원소의 값을 공백으로 구분
