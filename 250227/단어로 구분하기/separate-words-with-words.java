@@ -3,7 +3,9 @@ import java.util.*;
 import java.io.*;
 
 public class Main {
-    static String[] strArr;
+    // static String[] strArr;
+    static ArrayList<String> strArr;
+
     public static void main(String[] args) throws IOException{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
@@ -11,11 +13,17 @@ public class Main {
         String input = br.readLine();
 
         // logic // 
-        strArr = input.split(" ");
+        // strArr = input.split(" ");
+        strArr = new ArrayList<>(Arrays.asList(input.split(" ")));
+
         // output //
-        for(int i=0; i<strArr.length; i++) {
-            bw.write(strArr[i]+"\n");
+        // for(int i=0; i<strArr.length; i++) {
+        //     bw.write(strArr[i]+"\n");
+        // }
+        for(int i=0; i<strArr.size(); i++) {
+            bw.write(strArr.get(i)+"\n");
         }
+
         bw.flush();
         bw.close();
     }
