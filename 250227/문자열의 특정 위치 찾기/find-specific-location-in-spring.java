@@ -7,13 +7,17 @@ public class Main {
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
         String input = br.readLine();
+        StringTokenizer st = new StringTokenizer(input, " ");
+        
+        String str = st.nextToken();
+        String find = st.nextToken();
 
         // logic // 
-        if(input.indexOf("o") == -1) {
+        if(str.indexOf(find) == -1) {
             bw.write("No");
         }
         else {
-            bw.write(input.indexOf("o")+"");
+            bw.write(str.indexOf(find)+"");
         }
         
         // output //
