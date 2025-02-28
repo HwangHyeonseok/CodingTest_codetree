@@ -21,12 +21,12 @@ public class Main {
     }
 
     // 최대공약수를 구하는 함수
-    public static int gcd(int n, int m) {
-        if(n%m == 0) {
-            return m;
+    public static int gcd(int a, int b) {
+        if(b == 0) {
+            return a;
         }
         
-        return gcd(m, n%m);
+        return gcd(b, a%b);
     }
 }
 
