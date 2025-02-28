@@ -9,6 +9,10 @@ class Number {
     public Number(int val) {
         this.val = val;
     }
+    // 복사 생성자
+    public Number(Number other) {
+        this.val = other.val;
+    }
 }
 
 public class Main {
@@ -31,9 +35,10 @@ public class Main {
     }
 
     public static void swap(Number nObj, Number mObj) {
-        int temp = nObj.val;
+        // int temp = nObj.val;
+        Number temp = new Number(nObj);
         nObj.val = mObj.val;
-        mObj.val = temp;
+        mObj.val = temp.val;
     }
 }
 
