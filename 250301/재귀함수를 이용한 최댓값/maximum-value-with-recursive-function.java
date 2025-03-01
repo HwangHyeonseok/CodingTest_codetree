@@ -28,7 +28,7 @@ public class Main {
     // 작은 문제 -> 원소 두 개의 크기를 비교해서 최댓값을 저장
     public static void findMax(int n) {
         // 종료 조건
-        if(n==0) return;
+        if(n==-1) return;
 
         // 점화식(작은 문제)
         if(max < numArr.get(n)) max = numArr.get(n); 
