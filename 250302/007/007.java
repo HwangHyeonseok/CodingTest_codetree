@@ -1,24 +1,25 @@
 import java.util.*;
 import java.io.*;
 
+class People {
+    String code;
+    String location;
+    int time;
+    public People() {
+        this.code="";
+        this.location="";
+        this.time=0;
+    }
+
+    public People(String code, String location, int time) {
+        this.code = code;
+        this.location = location;
+        this.time = time;
+    }
+};
+
+
 public class Main {
-    static class People {
-        String code;
-        String location;
-        int time;
-        public People() {
-            this.code="";
-            this.location="";
-            this.time=0;
-        }
-
-        public People(String code, String location, int time) {
-            this.code = code;
-            this.location = location;
-            this.time = time;
-        }
-    };
-
     public static void main(String[] args) throws IOException{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
