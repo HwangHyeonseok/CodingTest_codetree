@@ -33,7 +33,7 @@ public class Main {
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         
         int n = Integer.parseInt(br.readLine());
-        for(int i=0; i<4; i++) {
+        for(int i=0; i<n; i++) {
             String input = br.readLine();
             StringTokenizer st = new StringTokenizer(input, " ");
             String name = st.nextToken();
