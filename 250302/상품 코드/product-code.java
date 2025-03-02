@@ -3,14 +3,14 @@ import java.io.*;
 
 class Product {
     String title;
-    String code;
+    int code;
     
     public Product() {
         this.title = "";
-        this.code = "";
+        this.code = 0;
     }
 
-    public Product(String title, String code) {
+    public Product(String title, int code) {
         this.title = title;
         this.code = code;
     }
@@ -32,8 +32,8 @@ public class Main {
         Product p2 = new Product(t, c);
         
         // output //
-        bw.write(String.format("product %d is %s\n", p1.title, p1.code));
-        bw.write(String.format("product %d is %s\n", p2.title, p2.code));
+        bw.write(String.format("product %d is %s\n", p1.code, p1.title));
+        bw.write(String.format("product %d is %s\n", p2.code, p2.title));
         bw.flush();
         bw.close();
     }
