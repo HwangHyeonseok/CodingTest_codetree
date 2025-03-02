@@ -16,12 +16,15 @@ public class Main {
 
         Arrays.sort(input1Arr);
         Arrays.sort(input2Arr);
-        
-        input1 = new String(input1Arr);
-        input2 = new String(input2Arr);
+
+        StringBuilder sb = new StringBuilder(new String(input1Arr));
+        String s1 = sb.reverse().toString();
+
+        sb = new StringBuilder(new String(input2Arr));
+        String s2 = sb.reverse().toString();
 
         // output //
-        if(input1.equals(input2)) bw.write("Yes");
+        if(s1.equals(s2)) bw.write("Yes");
         else bw.write("No");
         bw.flush();
         bw.close();
