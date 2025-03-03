@@ -2,7 +2,7 @@ import java.util.*;
 import java.io.*;
 
 public class Main {
-    static int[][] board = new int[101][101];
+    static int[][] board = new int[201][201];
     public static void main(String[] args) throws IOException{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
@@ -12,10 +12,10 @@ public class Main {
         for(int i=0;i<n;i++) {
             String input = br.readLine();
             StringTokenizer st = new StringTokenizer(input, " ");
-            int x1 = Integer.parseInt(st.nextToken());
-            int y1 = Integer.parseInt(st.nextToken());
-            int x2 = Integer.parseInt(st.nextToken());
-            int y2 = Integer.parseInt(st.nextToken());
+            int x1 = Integer.parseInt(st.nextToken()) + 100;
+            int y1 = Integer.parseInt(st.nextToken()) + 100;
+            int x2 = Integer.parseInt(st.nextToken()) + 100;
+            int y2 = Integer.parseInt(st.nextToken()) + 100;
 
             for(int r=y1; r<y2; r++) {
                 for(int c=x1; c<x2; c++) {
