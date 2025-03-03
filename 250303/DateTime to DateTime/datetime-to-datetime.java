@@ -20,7 +20,8 @@ public class Main {
         
         
         // output //
-        bw.write(ans+"");
+        if(ans < 0) bw.write("-1");
+        else bw.write(ans+"");
         bw.flush();
         bw.close();
     }
