@@ -1,5 +1,5 @@
 // B -> B | W -> W 로 가는 경우는 없다.
-// B -> W -> B -> W | W -> B -> W -> B와 같이 3번 이상 바뀌면 회색으로 표시
+// B로 바뀌는 배열, W로 바뀌는 배열 따로 카운트해서 둘 다 2 이상이면 gray로 칠한다.
 
 import java.util.*;
 import java.io.*;
@@ -43,13 +43,15 @@ public class Main {
     public static void moveR(int moveCnt) {
         // System.out.println("moveR 호출");
         for(int i=0; i<moveCnt; i++) {
-            if(board[curLoc] == 3) continue; // 회색인 경우 변화 X 
-            board[curLoc] = 1; // 검정으로 먼저 칠한다. 
-            blackCnt[curLoc]++; // 검정색 칠한 카운트 +1
+            if(board[curLoc] != 3) { // 회색인 경우 변화 X  
+                board[curLoc] = 1; // 검정으로 먼저 칠한다. 
+                blackCnt[curLoc]++; // 검정색 칠한 카운트 +1
 
-            if(whiteCnt[curLoc] >= 2 && blackCnt[curLoc] >= 2) { // 흰색 2번, 검은색 2번 칠한 경우
-                board[curLoc] = 3;
+                if(whiteCnt[curLoc] >= 2 && blackCnt[curLoc] >= 2) { // 흰색 2번, 검은색 2번 칠한 경우
+                    board[curLoc] = 3;
+                }
             }
+
 
             if(i == moveCnt-1) {
                 // System.out.println(curLoc+"\n");
@@ -63,13 +65,14 @@ public class Main {
     public static void moveL(int moveCnt) {
         // System.out.println("moveL 호출");
         for(int i=0; i<moveCnt; i++) {
-            if(board[curLoc] == 3) continue; // 회색인 경우 변화 X 
-            board[curLoc] = 2; // 흰색으로 먼저 칠한다. 
-            whiteCnt[curLoc]++; // 흰색 칠한 카운트 +1
+            if(board[curLoc] != 3) { // 회색인 경우 변화 X 
+                board[curLoc] = 2; // 흰색으로 먼저 칠한다. 
+                whiteCnt[curLoc]++; // 흰색 칠한 카운트 +1
 
-            if(whiteCnt[curLoc] >= 2 && blackCnt[curLoc] >= 2) { // 흰색 2번, 검은색 2번 칠한 경우
-                board[curLoc] = 3;
-            }
+                if(whiteCnt[curLoc] >= 2 && blackCnt[curLoc] >= 2) { // 흰색 2번, 검은색 2번 칠한 경우
+                    board[curLoc] = 3;
+                }
+            } 
 
             if(i == moveCnt-1) {
                 // System.out.println(curLoc+"\n");
