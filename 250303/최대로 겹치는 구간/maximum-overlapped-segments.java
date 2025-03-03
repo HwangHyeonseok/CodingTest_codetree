@@ -2,7 +2,7 @@ import java.util.*;
 import java.io.*;
 
 public class Main {
-    static int[] board = new int[101];
+    static int[] board = new int[201];
     public static void main(String[] args) throws IOException{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
@@ -16,7 +16,7 @@ public class Main {
             int endNum = Integer.parseInt(st.nextToken());
             
             for(int j=startNum; j<endNum; j++) {
-                board[j]++;
+                board[j+100]++;
             }
         }
 
