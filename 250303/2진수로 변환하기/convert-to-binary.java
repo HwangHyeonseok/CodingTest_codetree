@@ -10,6 +10,7 @@ public class Main {
         int a = Integer.parseInt(br.readLine());
 
         // logic // 
+        if(a == 0) bw.write("0");
         while(a != 0) {
             digits.add(a%2);
             a = a / 2;
