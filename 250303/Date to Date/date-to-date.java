@@ -17,18 +17,18 @@ public class Main {
         // logic //
         int day1 = 0;
         int day2 = 0; 
-        for(int i=1; i<=m1; i++) {
+        for(int i=1; i<=m1-1; i++) {
             day1 += days[i];
         }
         day1 += d1;
 
-        for(int i=1; i<=m2; i++) {
+        for(int i=1; i<=m2-1; i++) {
             day2 += days[i];
         }
         day2 += d2;
-        
+
         // output //
-        bw.write(String.format("%d", day2-day1));
+        bw.write(String.format("%d", day2-day1+1));
         bw.flush();
         bw.close();
     }
