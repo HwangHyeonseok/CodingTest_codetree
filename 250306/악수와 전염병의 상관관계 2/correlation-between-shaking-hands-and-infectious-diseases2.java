@@ -46,22 +46,31 @@ public class Main {
             virusList.add(new Virus(t,x,y));
         }
 
-        // 0) 초기 감염 개발자 처리
-        board[P] = 1;
-
         // 1) Virus 객체를 시간을 기준으로 오름차순 정렬
         Collections.sort(virusList, new timeOrder());
 
         // 2) 감염 로직 진행
-        for(int i=0; i<K; i++) {
+        boolean clabStart = false; // 악수 카운팅 시작 여부
+        int clabCnt = 0; // 악수 횟수
+        for(int i=0; i<T; i++) {
             int dev1 = virusList.get(i).x; // 1번 개발자 index 저장
             int dev2 = virusList.get(i).y; // 2번 개발자 index 저장
-            
-            if(board[dev1] != board[dev2]) { // 둘 중 한 명이 감염된 경우 -> 둘 다 감염처리
+
+            // 초기 감염된 개발자가 발견된 경우
+            if(dev1 == P || dev2 == P) {
+                board[P] = 1;
+                clabStart = true;
+            }
+            // 둘 다 감염되거나 둘 다 감염되지 않은 경우 -> 수정 필요 X
+            // 둘 중 한 명이 감염된 경우 -> 둘 다 감염처리
+            if(board[dev1] != board[dev2]) { 
                 board[dev1] = 1;
                 board[dev2] = 1;
             }
-            // 둘 다 감염되거나 둘 다 감염되지 않은 경우 -> 수정 필요 X
+            
+            if(clabStart == true) clabCnt++;
+
+            if(clabCnt == K) break;
         }
 
         // 3) 출력
