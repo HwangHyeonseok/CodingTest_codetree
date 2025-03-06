@@ -28,6 +28,7 @@ public class Main {
         }
         
         // output //
+        bw.write("-1");
         bw.flush();
         bw.close();
     }
@@ -39,6 +40,9 @@ public class Main {
             ans++;
             if(curX == 1000 && curY == 1000) { // 원점 도착 시
                 bw.write(ans+"");
+                bw.flush();
+                bw.close();
+                System.exit(0);
             }
         }
     }
@@ -50,6 +54,9 @@ public class Main {
             ans++;
             if(curX == 1000 && curY == 1000) { // 원점 도착 시
                 bw.write(ans+"");
+                bw.flush();
+                bw.close();
+                System.exit(0);
             }
         }
     }
@@ -61,6 +68,9 @@ public class Main {
             ans++;
             if(curX == 1000 && curY == 1000) { // 원점 도착 시
                 bw.write(ans+"");
+                bw.flush();
+                bw.close();
+                System.exit(0);
             }
         }
     }
@@ -72,6 +82,9 @@ public class Main {
             ans++;
             if(curX == 1000 && curY == 1000) { // 원점 도착 시
                 bw.write(ans+"");
+                bw.flush();
+                bw.close();
+                System.exit(0); 
             }
         }
     }
