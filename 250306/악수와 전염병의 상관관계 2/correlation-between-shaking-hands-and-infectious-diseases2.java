@@ -23,6 +23,7 @@ class timeOrder implements Comparator<Virus> {
 public class Main {
     static int[] board = new int[101]; // 0 : 음성, 1 : 양성
     static ArrayList<Virus> virusList = new ArrayList<>(); // 전염 command 저장
+    static int[] clabCnt = new int[101]; // 2번 까지만 감염시킨다.
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -45,32 +46,32 @@ public class Main {
             int y = Integer.parseInt(st.nextToken());
             virusList.add(new Virus(t,x,y));
         }
+        // 0) 처음 바이러스 감염된 개발자 처리
+        board[P] = 1;
 
         // 1) Virus 객체를 시간을 기준으로 오름차순 정렬
         Collections.sort(virusList, new timeOrder());
 
         // 2) 감염 로직 진행
-        boolean clabStart = false; // 악수 카운팅 시작 여부
-        int clabCnt = 0; // 악수 횟수
         for(int i=0; i<T; i++) {
             int dev1 = virusList.get(i).x; // 1번 개발자 index 저장
             int dev2 = virusList.get(i).y; // 2번 개발자 index 저장
 
-            // 초기 감염된 개발자가 발견된 경우
-            if(dev1 == P || dev2 == P) {
-                board[P] = 1;
-                clabStart = true;
+            // 둘 다 감염되지 않은 경우 -> 수정 필요 X
+            // 둘 다 감염된 경우
+            if(board[dev1] == 1 && board[dev2] == 1) {
+                clabCnt[dev1]++;
+                clabCnt[dev2]++;
             }
-            // 둘 다 감염되거나 둘 다 감염되지 않은 경우 -> 수정 필요 X
-            // 둘 중 한 명이 감염된 경우 -> 둘 다 감염처리
-            if(board[dev1] != board[dev2]) { 
-                board[dev1] = 1;
+            // 둘 중 한 명이 감염된 경우
+            else if(board[dev1] == 1 && clabCnt[dev1] < K) {  // 1번 개발자가 감염이 되었고, 악수 횟수가 2회 이하인 경우 -> 감염처리
                 board[dev2] = 1;
+                clabCnt[dev1]++;
             }
-            
-            if(clabStart == true) clabCnt++;
-
-            if(clabCnt == K) break;
+            else if(board[dev2] == 1 && clabCnt[dev2] < K) { // 2번 개발자가 감염이 되었고, 악수 횟수가 2회 이하인 경우 -> 감염처리
+                board[dev1] = 1;
+                clabCnt[dev2]++;
+            }
         }
 
         // 3) 출력
