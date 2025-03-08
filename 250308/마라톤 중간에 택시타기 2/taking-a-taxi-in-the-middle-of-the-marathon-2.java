@@ -59,11 +59,13 @@ public class Main {
 
             // 2번 체크포인트의 경우 이동 + 위치 최신화
                 // 이동
-            moveCnt += Math.abs(xPos-pointList.get(j).curX) + Math.abs(yPos-pointList.get(j).curY);
+            moveCnt += Math.abs(xPos-pointList.get(j).curX);
+            moveCnt += Math.abs(yPos-pointList.get(j).curY);
                 // 위치 최신화
-            xPos += pointList.get(j).curX;
-            yPos += pointList.get(j).curY;
+            xPos = pointList.get(j).curX;
+            yPos = pointList.get(j).curY;
         }
+        // System.out.println("제거 숫자 : " + removeIdx + " | " + moveCnt);
         return moveCnt;
     }
 }
