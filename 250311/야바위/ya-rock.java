@@ -28,6 +28,7 @@ public class Main {
 
         // logic //
         int MaxCorrectCnt = 0; // 최대로 맞춘 횟수
+        int ans = 0; // 종이컵 ans 번에 넣어야 최대로 조약돌을 발견할 수 있다.
         for(int init=1; init<=3; init++) { // 야바위에 처음 넣는 곳
             // 공 넣기
             for(int j=0; j<=3; j++) {
@@ -39,7 +40,10 @@ public class Main {
             int curCorrectCnt = yabawi();
             
             // 만약 지금 맞춘 횟수가 최고인 경우 갱신하고 그 값을 저장
-            if(curCorrectCnt > MaxCorrectCnt) MaxCorrectCnt = curCorrectCnt;
+            if(curCorrectCnt > MaxCorrectCnt) {
+                MaxCorrectCnt = curCorrectCnt;
+                ans = init;
+            }
         }
         
         bw.write(MaxCorrectCnt+"");
