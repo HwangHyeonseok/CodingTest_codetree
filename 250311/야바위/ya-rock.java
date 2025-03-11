@@ -9,11 +9,13 @@ public class Main {
     static int[] b;
     static int[] c;
 
+    static int N;
+
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         
-        int N= Integer.parseInt(br.readLine());
+        N= Integer.parseInt(br.readLine());
         a = new int[N];
         b = new int[N];
         c = new int[N];
@@ -44,6 +46,9 @@ public class Main {
                 MaxCorrectCnt = curCorrectCnt;
                 ans = init;
             }
+
+            // test //
+            // System.out.println("init : " + init + " curCorrectCnt : " + curCorrectCnt);
         }
         
         bw.write(MaxCorrectCnt+"");
@@ -53,7 +58,7 @@ public class Main {
     // 야바위 로직
     public static int yabawi() {
         int correctCnt = 0; // 야바위 맞춘 횟수
-        for(int i=0; i<3; i++) { // 3개의 명령어 실행
+        for(int i=0; i<N; i++) { // 3개의 명령어 실행
             // a 와 b 를 바꾼다.
             int temp = board[a[i]];
             board[a[i]] = board[b[i]];
