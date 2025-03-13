@@ -26,7 +26,7 @@ public class Main {
 
         // 답을 boardMaxVal ~ 1 까지 가정해보면서 그 최솟값을 정답으로 한다.
         for(int i=boardMaxVal; i>=1; i--) {
-            // 건널 수 있는지 체크
+            // 건너면서 최대로 건너뛰어야 하는 거리 계산
             int distanceTemp = 0;
             int distanceMax = 0;
             for(int j=0; j<N; j++) {
@@ -38,6 +38,8 @@ public class Main {
                     distanceTemp = 0;
                 }
             }
+            // 만약 N번째 지점에 도달할 수 없는 경우
+            if(distanceTemp != 0) continue;
 
             // 만약 k번보다 더 점프량이 적은 경우 최솟값 갱신
             if(distanceMax < K) {
