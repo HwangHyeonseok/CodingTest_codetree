@@ -25,7 +25,7 @@ public class Main {
         int ans = boardMaxVal; // 처음에는 board에 담긴 수 중 최댓값
 
         // 답을 boardMaxVal ~ 1 까지 가정해보면서 그 최솟값을 정답으로 한다.
-        for(int i=boardMaxVal; i>=1; i--) {
+        for(int i=boardMaxVal; i>=Math.max(board[0], board[N-1]); i--) {
             // 건너면서 최대로 건너뛰어야 하는 거리 계산
             int distanceTemp = 0;
             int distanceMax = 0;
