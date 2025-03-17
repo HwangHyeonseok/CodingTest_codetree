@@ -27,7 +27,10 @@ public class Main {
     public static void printList() throws IOException {
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         for(ArrayList<Integer> list : result) {
-            bw.write(list.get(0)+" "+list.get(1)+"\n");
+            for(int i=0; i<list.size(); i++) {
+                bw.write(list.get(i)+" ");
+            }
+            bw.write("\n");
             // System.out.println(list.get(0)+" "+list.get(1));
         }
         bw.flush();
