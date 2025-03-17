@@ -12,12 +12,11 @@ public class Main {
         StringTokenizer st = new StringTokenizer(input, " ");
         int K = Integer.parseInt(st.nextToken()); // 1~K 중에서
         int N = Integer.parseInt(st.nextToken()); // N개를 고른다.
+        List<Integer> curr = new ArrayList<>();
+        boolean[] visited = new boolean[K+1];
         
-        boolean[] visited = new boolean[K+1]; // 방문 여부 체크 | 0은 공석
-        ArrayList<Integer> curr = new ArrayList<>(); // 현재 담긴 원소
-
         // logic // 
-        permutation(N, K, visited, curr);
+        permutation(K, N, curr, visited);
         printList();
         // output //
         bw.close();
@@ -31,28 +30,28 @@ public class Main {
                 bw.write(list.get(i)+" ");
             }
             bw.write("\n");
-            // System.out.println(list.get(0)+" "+list.get(1));
         }
         bw.flush();
     }
 
-    public static void permutation(int N, int K, boolean[] visited, ArrayList<Integer> curr) {
+    public static void permutation(int K, int N, List<Integer> curr, boolean[] visited) {
         // basecase
-        if(N == curr.size()) {
+        if(curr.size() == N) {
             result.add(new ArrayList<Integer>(curr));
             return;
         }
+
         // recursive call
         for(int i=1; i<=K; i++) {
-            // if(visited[i] == true) continue; // 이미 있는 원소는 체크하지 않음
+            // if(visited[i] == true) continue; // 이미 있는 값인 경우(중복을 제거해야 하는 경우 사용)
             // before recursive
             curr.add(i);
-            visited[i] = true;
+            visited[i] = true; // (중복을 제거해야 하는 경우 사용)
             // recursive
-            permutation(N, K, visited, curr);
+            permutation(K,N,curr,visited);
             // after recursive
             curr.remove(curr.size()-1);
-            visited[i] = false;
+            visited[i] = false; // (중복을 제거해야 하는 경우 사용)
         }
     }
 
