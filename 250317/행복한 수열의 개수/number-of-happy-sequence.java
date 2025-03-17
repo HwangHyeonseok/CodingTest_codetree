@@ -66,6 +66,8 @@ public class Main {
             }
         }
 
+        combo = 0;
+        prevNum = -1;
         // r : 0~N-1, c : checkIdx 한 열 체크
         for(int r=0; r<N; r++) {
             if(prevNum == -1) { // 처음 비교군이 없는 경우
