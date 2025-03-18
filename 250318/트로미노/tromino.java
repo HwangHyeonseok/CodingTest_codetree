@@ -27,7 +27,7 @@ public class Main {
         // 시작점을 대고 최댓값인지 판단한다.
         int ans = -1;
         for(int r=0; r<N; r++) {
-            for(int c=0; c<N; c++) {
+            for(int c=0; c<M; c++) {
                 int maxTriangleSum = triangle(r,c, N, M);
                 int maxlongSquareSUm = square(r,c,N,M);
                 
