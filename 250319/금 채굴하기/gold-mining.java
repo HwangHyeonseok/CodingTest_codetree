@@ -1,4 +1,4 @@
-// 11분+ 1:57 -> 4:05
+// 접근 방법이 틀렸었음
 // 손해보지 않으면서 채굴할 수 있는 가장 많은 금의 개수
 // 채굴에 드는 비용 : Math.pow(K, 2) + Math.pow((K+1), 2)
 // 금 한 개 가격 : M
@@ -121,7 +121,7 @@ public class Main {
         // (0,0)부터 K를 0~N-1까지 넓혀보면서 정답을 찾는다.
         for(int r=0; r<N; r++) { // 시작점 r
             for(int c=0; c<N; c++) { // 시작점 c
-                for(int K=0; K<N; K++) { // 탐색 영역 K
+                for(int K=0; K<=N; K++) { // 탐색 영역 K
                     if(K==0) { // (r,c) 지점만 탐색하는 경우
                         if(coinBoard[r][c] == 1) { // 그 지점에서 코인 발견
                             ans = Math.max(1, ans); // 코인 개수 1개
@@ -132,7 +132,7 @@ public class Main {
                     getArea(r, c, K, N);
 
                     // test//
-                    // if(r==2 && c==4 && K==6) {
+                    // if(r==3 && c==3 && K==5) {
                     //     for(int r1=0; r1<N; r1++) {
                     //         for(int c1=0; c1<N; c1++) {
                     //             System.out.print(miningArea[r1][c1]+" ");
