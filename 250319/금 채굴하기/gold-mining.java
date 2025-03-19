@@ -46,7 +46,7 @@ public class Main {
     static int[] dc = {0,0,-1,1};
     public static void getArea(int curR, int curC, int K, int N) {
         // basecase
-        if(K == 0) {
+        if(K == -1) {
             return;
         }
 
@@ -54,10 +54,10 @@ public class Main {
         for(int i=0; i<4; i++) {
             // 중복 제거 필요 없음
             // before recursive
+            miningArea[curR][curC] = 1;
             int nr = curR + dr[i];
             int nc = curC + dc[i];
             if(nr < 0 || nc < 0 || nr >= N || nc >= N) continue;
-            miningArea[nr][nc] = 1;
             
             // recursive
             getArea(nr, nc, K-1, N);
@@ -115,9 +115,19 @@ public class Main {
                     // 채굴 영역 설정
                     getArea(r, c, K, N);
 
+                    // test//
+                    // if(r==2 && c==4 && K==1) {
+                    //     for(int r1=0; r1<N; r1++) {
+                    //         for(int c1=0; c1<N; c1++) {
+                    //             System.out.print(miningArea[r1][c1]+" ");
+                    //         }
+                    //         System.out.println();
+                    //     }
+                    // }
+
                     // 채굴 영역에서 금이 있는지
                     ans = Math.max(ans, goldCheck(K,M,N));
-
+                    // System.out.println("r : " + r + " c: " + c + " = " + ans);
                     // 채굴할 위치 초기화
                     initial(N);
                 }
