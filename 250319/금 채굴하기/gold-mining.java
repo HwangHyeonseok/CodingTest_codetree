@@ -105,7 +105,7 @@ public class Main {
         // (0,0)부터 K를 0~N-1까지 넓혀보면서 정답을 찾는다.
         for(int r=0; r<N; r++) { // 시작점 r
             for(int c=0; c<N; c++) { // 시작점 c
-                for(int K=0; K<=N-1; K++) { // 탐색 영역 K
+                for(int K=0; (int) Math.pow(K, 2)+(int) Math.pow((K+1),2)<=N*N; K++) { // 탐색 영역 K
                     if(K==0) { // (r,c) 지점만 탐색하는 경우
                         if(coinBoard[r][c] == 1) { // 그 지점에서 코인 발견
                             ans = Math.max(1, ans); // 코인 개수 1개
