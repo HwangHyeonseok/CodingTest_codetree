@@ -1,4 +1,4 @@
-// 11분+ 1:57 -> 3:52
+// 11분+ 1:57 -> 4:05
 // 손해보지 않으면서 채굴할 수 있는 가장 많은 금의 개수
 // 채굴에 드는 비용 : Math.pow(K, 2) + Math.pow((K+1), 2)
 // 금 한 개 가격 : M
@@ -52,12 +52,14 @@ public class Main {
 
         // recursive call
         for(int i=0; i<4; i++) {
+            // System.out.println("r : " + curR + " c : " + curC);
             // 중복 제거 필요 없음
             // before recursive
             miningArea[curR][curC] = 1;
             int nr = curR + dr[i];
             int nc = curC + dc[i];
             if(nr < 0 || nc < 0 || nr >= N || nc >= N) continue;
+            if(miningArea[nr][nc] == 1) continue;
             
             // recursive
             getArea(nr, nc, K-1, N);
@@ -114,7 +116,8 @@ public class Main {
                     }
                     // 채굴 영역 설정
                     getArea(r, c, K, N);
-
+                    // System.out.println("=======================");
+                    
                     // test//
                     // if(r==2 && c==4 && K==1) {
                     //     for(int r1=0; r1<N; r1++) {
