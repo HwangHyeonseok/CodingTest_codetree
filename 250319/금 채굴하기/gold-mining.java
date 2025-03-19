@@ -9,8 +9,17 @@
 import java.util.*;
 import java.io.*;
 
-
 public class Main {
+    static public class Pair<T,V> {
+        T first;
+        V second;
+
+        Pair(T first, V second) {
+            this.first = first;
+            this.second = second;
+        }
+    }
+    
     static int[][] coinBoard; // 금 지도
     static int[][] miningArea; // 채굴할 위치
 
@@ -44,27 +53,31 @@ public class Main {
     // (시작 위치와 N에 따른) 채굴 영역 설정 로직 - 백트래킹
     static int[] dr = {-1,1,0,0};
     static int[] dc = {0,0,-1,1};
-    public static void getArea(int curR, int curC, int K, int N) {
-        // basecase
-        if(K == -1) {
-            return;
-        }
+    public static void getArea(int startR, int startC, int K, int N) {
+        Queue<Pair<Integer, Integer>> q = new ArrayDeque<>();
+        // 1. 초기 노드 방문 처리
+        q.offer(new Pair<>(startR, startC));
+        miningArea[startR][startC] = 1;
 
-        // recursive call
-        for(int i=0; i<4; i++) {
-            // System.out.println("r : " + curR + " c : " + curC);
-            // 중복 제거 필요 없음
-            // before recursive
-            miningArea[curR][curC] = 1;
-            int nr = curR + dr[i];
-            int nc = curC + dc[i];
-            if(nr < 0 || nc < 0 || nr >= N || nc >= N) continue;
-            if(miningArea[nr][nc] == 1) continue;
+        // 2. 큐가 빌 때까지 다음 노드 탐색
+        while(!q.isEmpty()) {
+            int curR = q.peek().first;
+            int curC = q.peek().second;
+            q.poll();
+
+            // 종료 조건 : K 도달 시
+            if(K+1 == miningArea[curR][curC]) return;
             
-            // recursive
-            getArea(nr, nc, K-1, N);
-
-            // after recursive
+            for(int i=0; i<4; i++) {
+                int nr = curR + dr[i];
+                int nc = curC + dc[i];
+                if(nr < 0 || nc < 0 || nr >= N || nc >= N) continue;
+                if(miningArea[nr][nc] != 0) continue;
+                
+                // 3. 다음 노드 방문 처리
+                q.offer(new Pair<>(nr, nc));
+                miningArea[nr][nc] = miningArea[curR][curC]+1;
+            }
         }
     }
 
@@ -75,7 +88,7 @@ public class Main {
         // 채굴한 금의 양 체크
         for(int r=0; r<N; r++) {
             for(int c=0; c<N; c++) {
-                if(miningArea[r][c] == 1 && coinBoard[r][c] == 1) goldCnt++; // 채굴할 수 있는 영역이면서 금이 있는 영역
+                if(miningArea[r][c] != 0 && coinBoard[r][c] == 1) goldCnt++; // 채굴할 수 있는 영역이면서 금이 있는 영역
             }
         }
 
@@ -102,6 +115,7 @@ public class Main {
 
     // 금 채굴 로직
     public static int getGold(int N, int M) {
+        
         int ans = 0; // 손해보지 않으면서 채굴할 수 있는 가장 많은 금의 개수
 
         // (0,0)부터 K를 0~N-1까지 넓혀보면서 정답을 찾는다.
@@ -116,10 +130,9 @@ public class Main {
                     }
                     // 채굴 영역 설정
                     getArea(r, c, K, N);
-                    // System.out.println("=======================");
-                    
+
                     // test//
-                    // if(r==2 && c==4 && K==1) {
+                    // if(r==2 && c==4 && K==6) {
                     //     for(int r1=0; r1<N; r1++) {
                     //         for(int c1=0; c1<N; c1++) {
                     //             System.out.print(miningArea[r1][c1]+" ");
@@ -130,7 +143,6 @@ public class Main {
 
                     // 채굴 영역에서 금이 있는지
                     ans = Math.max(ans, goldCheck(K,M,N));
-                    // System.out.println("r : " + r + " c: " + c + " = " + ans);
                     // 채굴할 위치 초기화
                     initial(N);
                 }
